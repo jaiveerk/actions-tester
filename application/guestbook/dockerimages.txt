@@ -1,0 +1,2 @@
+gcr.io/google_samples/gb-redis-follower:v2
+docker.io/redis:6.0.5
