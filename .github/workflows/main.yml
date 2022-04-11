@@ -35,12 +35,12 @@ on:
   workflow_dispatch:
 
 env:
-  AZURE_CONTAINER_REGISTRY: "your-azure-container-registry"
-  CONTAINER_NAME: "your-container-name"
-  RESOURCE_GROUP: "your-resource-group"
-  CLUSTER_NAME: "your-cluster-name"
-  IMAGE_PULL_SECRET_NAME: "your-image-pull-secret-name"
-  DEPLOYMENT_MANIFEST_PATH: 'your-deployment-manifest-path'
+  AZURE_CONTAINER_REGISTRY: "jkatariyatest"
+  CONTAINER_NAMES: ["jkatariyatest.azurecr.io/githubactions/redis-frontend-test", "jkatariyatest.azurecr.io/githubactions/redis-follower-test", "jkatariyatest.azurecr.io/githubactions/redis-leader-test"]
+  RESOURCE_GROUP: "jkatariya-test"
+  CLUSTER_NAME: "jkatariya-test"
+  IMAGE_PULL_SECRET_NAME: "test-pull-secret"
+  DEPLOYMENT_MANIFEST_PATH: 'application/guestbook'
 
 jobs:
   build:
@@ -62,10 +62,14 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       
-    # Builds and pushes an image up to your Azure Container Registry
-    - name: Build and push image to ACR
-      run: |
-        az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
+    # # Builds and pushes an image up to your Azure Container Registry -- not needed for remote images
+    # - name: Build and push image to ACR
+    #   run: |
+
+    #     for CONTAINERNAME in ${{env.CONTAINER_NAMES}}
+    #     do
+    #       az acr build --image $CONTAINERNAME:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
+
     # Retrieves your Azure Kubernetes Service cluster's kubeconfig file
     - name: Get K8s context
       uses: azure/aks-set-context@v2.0
@@ -103,6 +107,7 @@ jobs:
         action: deploy
         manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
         images: |
-          ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+          ${{env.CONTAINER_NAMES}}
+
         imagepullsecrets: |
           ${{ env.IMAGE_PULL_SECRET_NAME }}
