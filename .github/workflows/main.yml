@@ -36,7 +36,6 @@ on:
 
 env:
   AZURE_CONTAINER_REGISTRY: "jkatariyatest"
-  CONTAINER_NAMES: ["jkatariyatest.azurecr.io/githubactions/redis-frontend-test", "jkatariyatest.azurecr.io/githubactions/redis-follower-test", "jkatariyatest.azurecr.io/githubactions/redis-leader-test"]
   RESOURCE_GROUP: "jkatariya-test"
   CLUSTER_NAME: "jkatariya-test"
   IMAGE_PULL_SECRET_NAME: "test-pull-secret"
@@ -107,7 +106,9 @@ jobs:
         action: deploy
         manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
         images: |
-          ${{env.CONTAINER_NAMES}}
+          jkatariyatest.azurecr.io/githubactions/redis-frontend-test"
+          "jkatariyatest.azurecr.io/githubactions/redis-follower-test"
+          "jkatariyatest.azurecr.io/githubactions/redis-leader-test"
 
         imagepullsecrets: |
           ${{ env.IMAGE_PULL_SECRET_NAME }}
