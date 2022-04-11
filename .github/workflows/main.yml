@@ -101,7 +101,7 @@ jobs:
 
     # Deploys application based on given manifest file
     - name: Deploys application
-      uses: jaiveerk/k8s-deploy@v3.0.3
+      uses: jaiveerk/k8s-deploy@v3.0.3.0
       with:
         action: deploy
         manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
