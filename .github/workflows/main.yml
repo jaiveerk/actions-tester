@@ -37,7 +37,7 @@ on:
 env:
   AZURE_CONTAINER_REGISTRY: "jkatariyatest"
   RESOURCE_GROUP: "jkatariya-test"
-  CLUSTER_NAME: "jkatariya-test"
+  CLUSTER_NAME: "jkatariyatest"
   IMAGE_PULL_SECRET_NAME: "test-pull-secret"
   DEPLOYMENT_MANIFEST_PATH: "application/guestbook"
 
