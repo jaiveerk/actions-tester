@@ -38,8 +38,9 @@ env:
   AZURE_CONTAINER_REGISTRY: "jkatariyatest"
   RESOURCE_GROUP: "jkatariya-test"
   CLUSTER_NAME: "jkatariyatest"
+  CONTAINER_NAME: githubactions/azure-demo
   IMAGE_PULL_SECRET_NAME: "test-pull-secret"
-  DEPLOYMENT_MANIFEST_PATH: "application/guestbook/frontend/frontend-deployment.yaml \n application/guestbook/frontend/frontend-service.yaml \n application/guestbook/redis"
+  DEPLOYMENT_MANIFEST_PATH: "application \n docker"
 
 jobs:
   build:
@@ -61,13 +62,10 @@ jobs:
         tenant-id: ${{ secrets.AZURE_TENANT_ID }}
         subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       
-    # # Builds and pushes an image up to your Azure Container Registry -- not needed for remote images
-    # - name: Build and push image to ACR
-    #   run: |
-
-    #     for CONTAINERNAME in ${{env.CONTAINER_NAMES}}
-    #     do
-    #       az acr build --image $CONTAINERNAME:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
+    # Builds and pushes an image up to your Azure Container Registry -- not needed for remote images
+    - name: Build and push image to ACR
+      run: |
+        az acr build --image ${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} docker/azure-vote
 
     # Retrieves your Azure Kubernetes Service cluster's kubeconfig file
     - name: Get K8s context
