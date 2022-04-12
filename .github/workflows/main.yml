@@ -107,6 +107,7 @@ jobs:
           jkatariyatest.azurecr.io/githubactions/redis-frontend-test
           jkatariyatest.azurecr.io/githubactions/redis-follower-test
           jkatariyatest.azurecr.io/githubactions/redis-leader-test
+          jkatariyatest.azurecr.io/githubactions/azure-demo:${{ github.sha }}
 
         imagepullsecrets: |
           ${{ env.IMAGE_PULL_SECRET_NAME }}
