@@ -1,27 +1,24 @@
-# SOURCE: https://cloud.google.com/kubernetes-engine/docs/tutorials/guestbook
-apiVersion: apps/v1
+apiVersion: apps/v1 #  for k8s versions before 1.9.0 use apps/v1beta2  and before 1.8.0 use extensions/v1beta1
 kind: Deployment
 metadata:
-  name: redis-leader
-  labels:
-    app: redis
-    role: leader
-    tier: backend
+  name: redis-master
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: redis
+      role: master
+      tier: backend
+  replicas: 1
   template:
     metadata:
       labels:
         app: redis
-        role: leader
+        role: master
         tier: backend
     spec:
       containers:
-      - name: leader
-        image: jkatariyatest.azurecr.io/githubactions/redis-leader-test
+      - name: master
+        image: k8s.gcr.io/redis:e2e  # or just image: redis
         resources:
           requests:
             cpu: 100m

@@ -1,11 +1,10 @@
-# SOURCE: https://cloud.google.com/kubernetes-engine/docs/tutorials/guestbook
 apiVersion: v1
 kind: Service
 metadata:
-  name: redis-leader
+  name: redis-master
   labels:
     app: redis
-    role: leader
+    role: master
     tier: backend
 spec:
   ports:
@@ -13,5 +12,5 @@ spec:
     targetPort: 6379
   selector:
     app: redis
-    role: leader
+    role: master
     tier: backend
