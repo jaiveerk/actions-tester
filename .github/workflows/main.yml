@@ -39,7 +39,7 @@ env:
   RESOURCE_GROUP: "jkatariya-test"
   CLUSTER_NAME: "jkatariyatest"
   IMAGE_PULL_SECRET_NAME: "test-pull-secret"
-  DEPLOYMENT_MANIFEST_PATH: "application/guestbook/frontend application"
+  DEPLOYMENT_MANIFEST_PATH: "application/guestbook/frontend \n application"
 
 jobs:
   build:
