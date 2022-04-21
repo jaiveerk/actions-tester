@@ -45,7 +45,6 @@ env:
 jobs:
   build:
     permissions:
-      actions: read
       contents: read
       id-token: write
 
@@ -69,7 +68,6 @@ jobs:
 
   createSecret:
     permissions:
-      actions: read
       contents: read
       id-token: write
 
