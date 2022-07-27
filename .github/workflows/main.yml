@@ -141,7 +141,7 @@ jobs:
 
     # Deploys application based on given manifest file
     - name: Deploys application
-      uses: jaiveerk/k8s-deploy@57c7db4bbd97aaac1efa458e7ff91790361a53fb
+      uses: jaiveerk/k8s-deploy@v4.3
       with:
         action: deploy
         strategy: blue-green
