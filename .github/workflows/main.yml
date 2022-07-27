@@ -141,7 +141,7 @@ jobs:
 
     # Deploys application based on given manifest file
     - name: Deploys application
-      uses: jaiveerk/k8s-deploy@releases/v4.4.1
+      uses: Azure/k8s-deploy@releases/v4.0
       with:
         action: deploy
         strategy: blue-green
