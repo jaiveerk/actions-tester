@@ -141,11 +141,11 @@ jobs:
 
     # Deploys application based on given manifest file
     - name: Deploys application
-      uses: jaiveerk/k8s-deploy@releases/v4.2.1
+      uses: azure/k8s-deploy@4.3
       with:
-        action: promote
+        action: deploy
         strategy: blue-green
-        route-method: service
+        route-method: ingress
         manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
         images: |
           ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
