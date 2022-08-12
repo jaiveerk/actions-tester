@@ -142,7 +142,7 @@ jobs:
       - name: Deploys application
         uses: jaiveerk/k8s-deploy@create-release
         with:
-          action: deploy
+          action: reject
           strategy: blue-green
           route-method: smi
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
