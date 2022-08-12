@@ -142,9 +142,9 @@ jobs:
       - name: Deploys application
         uses: jaiveerk/k8s-deploy@create-release
         with:
-          action: reject
+          action: deploy
           strategy: blue-green
-          route-method: smi
+          route-method: ingress
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
