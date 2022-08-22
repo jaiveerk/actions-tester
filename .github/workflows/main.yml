@@ -142,7 +142,24 @@ jobs:
       - name: Deploys application
         uses: jaiveerk/k8s-deploy@create-release
         with:
-          action: reject
+          action: deploy
+          strategy: blue-green
+          route-method: service
+          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          images: |
+            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/githubactions/redis-follower-test
+            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/githubactions/redis-leader-test
+            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/githubactions/redis-frontend-test
+
+          imagepullsecrets: |
+            ${{ env.IMAGE_PULL_SECRET_NAME }}
+
+      # Deploys application based on given manifest file
+      - name: Deploys application
+        uses: jaiveerk/k8s-deploy@create-release
+        with:
+          action: promote
           strategy: blue-green
           route-method: service
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
