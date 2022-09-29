@@ -33,8 +33,7 @@ on:
 env:
   AZURE_CONTAINER_REGISTRY: jkatariyatest
   CONTAINER_NAME: githubactions/redis-frontend-test
-  CLUSTER_RESOURCE_GROUP: jkatariyatest
-  ACR_RESOURCE_GROUP: your-resource-group
+  RESOURCE_GROUP: jkatariyatest
   CLUSTER_NAME: jkatariyatest
   DEPLOYMENT_MANIFEST_PATH: application/guestbook/frontend
   BRANCH_NAME: main
@@ -55,7 +54,7 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - name: Build and push image to ACR
-        run: az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.ACR_RESOURCE_GROUP }} .
+        run: az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} .
   deploy:
     permissions:
       actions: read
@@ -75,7 +74,7 @@ jobs:
       - name: Get K8s context
         uses: azure/aks-set-context@v3
         with:
-          resource-group: ${{ env.CLUSTER_RESOURCE_GROUP }}
+          resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
       - name: Deploys application
         uses: Azure/k8s-deploy@v4
