@@ -54,7 +54,8 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - name: Build and push image to ACR
-        run: az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+        run: |
+          az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} ${{ env.DEPLOYMENT_MANIFEST_PATH }}
   deploy:
     permissions:
       actions: read
@@ -80,7 +81,7 @@ jobs:
         uses: Azure/k8s-deploy@v4
         with:
           action: deploy
-          manifests: |-
-            
+          manifests: |
             ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-          images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+          images: |
+            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
