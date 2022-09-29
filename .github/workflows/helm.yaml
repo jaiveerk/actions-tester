@@ -32,7 +32,7 @@ on:
   workflow_dispatch: null
 env:
   AZURE_CONTAINER_REGISTRY: jkatariyatest
-  CONTAINER_NAME: othertestimage3
+  CONTAINER_NAME: testimage
   RESOURCE_GROUP: jkatariyatest
   CLUSTER_NAME: jkatariyatest
   BRANCH_NAME: main
