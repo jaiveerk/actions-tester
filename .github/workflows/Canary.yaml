@@ -93,7 +93,7 @@ jobs:
     needs: deploy
     environment: promote
     steps:
-      - run: echo requested approval (approve to promote, deny to reject)
+      - run: echo 'requested approval (approve to promote, deny to reject)'
   promote:
     permissions:
       actions: read
