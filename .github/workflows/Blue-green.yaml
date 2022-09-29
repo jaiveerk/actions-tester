@@ -37,7 +37,7 @@ env:
   RESOURCE_GROUP: jkatariyatest
   CLUSTER_NAME: jkatariyatest
   DEPLOYMENT_MANIFEST_PATH: docker/azure-vote
-  DEPLOYMENT_STRATEGY: Blue/green
+  DEPLOYMENT_STRATEGY: Blue-green
   BRANCH_NAME: main
   DOCKERFILE_LOCATION: docker/azure-vote
 jobs:
