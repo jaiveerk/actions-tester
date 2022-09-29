@@ -1,3 +1,4 @@
+## add a required approval to the promote environment https://docs.github.com/en/actions/managing-workflow-runs/reviewing-deployments 
 
 ## This workflow will build and push an application to a Azure Kubernetes Service (AKS) cluster when you push your code
 ##
