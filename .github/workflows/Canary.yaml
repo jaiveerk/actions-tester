@@ -37,7 +37,7 @@ env:
   CLUSTER_NAME: jkatariyatest
   DEPLOYMENT_MANIFEST_PATH: docker/azure-vote
   DEPLOYMENT_STRATEGY: Canary
-  BRANCH_NAME: testbranch
+  BRANCH_NAME: test-branch
 jobs:
   buildImage:
     permissions:
@@ -83,7 +83,9 @@ jobs:
           strategy: ${{ env.DEPLOYMENT_STRATEGY }}
           traffic-split-method: pod
           action: deploy
-          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          manifests: |-
+            
+            ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
   shouldPromote:
     runs-on: ubuntu-latest
@@ -119,7 +121,9 @@ jobs:
           strategy: ${{ env.DEPLOYMENT_STRATEGY }}
           traffic-split-method: pod
           action: promote
-          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          manifests: |-
+            
+            ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
   reject:
     permissions:
@@ -149,5 +153,7 @@ jobs:
           strategy: ${{ env.DEPLOYMENT_STRATEGY }}
           traffic-split-method: pod
           action: reject
-          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          manifests: |-
+            
+            ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
