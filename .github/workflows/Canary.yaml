@@ -32,10 +32,10 @@ on:
   workflow_dispatch: null
 env:
   AZURE_CONTAINER_REGISTRY: jkatariyatest
-  CONTAINER_NAME: githubactions/redis-frontend-test
+  CONTAINER_NAME: docker/azure-vote
   RESOURCE_GROUP: jkatariyatest
   CLUSTER_NAME: jkatariyatest
-  DEPLOYMENT_MANIFEST_PATH: application/guestbook/frontend
+  DEPLOYMENT_MANIFEST_PATH: docker/azure-vote
   DEPLOYMENT_STRATEGY: Canary
   BRANCH_NAME: testbranch
 jobs:
