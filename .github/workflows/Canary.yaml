@@ -37,7 +37,7 @@ env:
   CLUSTER_NAME: jkatariyatest
   DEPLOYMENT_MANIFEST_PATH: docker/azure-vote
   DEPLOYMENT_STRATEGY: Canary
-  BRANCH_NAME: test-branch
+  BRANCH_NAME: testbranch
 jobs:
   buildImage:
     permissions:
