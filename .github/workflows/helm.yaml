@@ -31,13 +31,13 @@ name: Build and deploy an app to AKS with Helm
 on:
   workflow_dispatch: null
 env:
-  AZURE_CONTAINER_REGISTRY: jkatariyatest
+  AZURE_CONTAINER_REGISTRY: registry1
   CONTAINER_NAME: testimage
-  RESOURCE_GROUP: jkatariyatest
-  CLUSTER_NAME: jkatariyatest
+  RESOURCE_GROUP: resourceGroup1
+  CLUSTER_NAME: cluster1
   BRANCH_NAME: main
-  HELM_DEPLOY_COMMAND: helm upgrade --wait -i -f chart/values.yaml automated-deployment chart/chart.yaml
-  DOCKERFILE_LOCATION: docker/azure-vote
+  HELM_DEPLOY_COMMAND: helm upgrade --wait -i -f chart/values.yaml  --set testkey=testvalue  --set testother=testothervalue automated-deployment chart/chart.yaml
+  DOCKERFILE_LOCATION: docker
 jobs:
   buildImage:
     permissions:

@@ -31,12 +31,13 @@ name: Build and deploy an app to AKS
 on:
   workflow_dispatch: null
 env:
-  AZURE_CONTAINER_REGISTRY: jkatariyatest
-  CONTAINER_NAME: docker/azure-vote
-  RESOURCE_GROUP: jkatariyatest
-  CLUSTER_NAME: jkatariyatest
+  AZURE_CONTAINER_REGISTRY: registry1
+  CONTAINER_NAME: testimage
+  RESOURCE_GROUP: resourceGroup1
+  CLUSTER_NAME: cluster1
   DEPLOYMENT_MANIFEST_PATH: docker/azure-vote
   BRANCH_NAME: main
+  DOCKERFILE_LOCATION: docker/azure-vote
 jobs:
   buildImage:
     permissions:
@@ -55,7 +56,7 @@ jobs:
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
       - name: Build and push image to ACR
         run: |
-          az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          az acr build --image ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }} --registry ${{ env.AZURE_CONTAINER_REGISTRY }} -g ${{ env.RESOURCE_GROUP }} ${{ env.DOCKERFILE_LOCATION }}
   deploy:
     permissions:
       actions: read

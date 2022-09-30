@@ -32,14 +32,14 @@ name: Build and deploy an app to AKS
 on:
   workflow_dispatch: null
 env:
-  AZURE_CONTAINER_REGISTRY: jkatariyatest
-  CONTAINER_NAME: githubactions/azure-demo
-  RESOURCE_GROUP: jkatariyatest
-  CLUSTER_NAME: jkatariyatest
-  DEPLOYMENT_MANIFEST_PATH: docker/azure-vote
-  DEPLOYMENT_STRATEGY: Blue-green
+  AZURE_CONTAINER_REGISTRY: registry1
+  CONTAINER_NAME: testimage
+  RESOURCE_GROUP: resourceGroup1
+  CLUSTER_NAME: cluster1
+  DEPLOYMENT_MANIFEST_PATH: docker
+  DEPLOYMENT_STRATEGY: Blue/green
   BRANCH_NAME: main
-  DOCKERFILE_LOCATION: docker/azure-vote
+  DOCKERFILE_LOCATION: docker
 jobs:
   buildImage:
     permissions:
