@@ -33,7 +33,7 @@ on:
   workflow_dispatch: null
 env:
   AZURE_CONTAINER_REGISTRY: jkatariyatest
-  CONTAINER_NAME: testimage
+  CONTAINER_NAME: githubactions/azure-demo
   RESOURCE_GROUP: jkatariyatest
   CLUSTER_NAME: jkatariyatest
   DEPLOYMENT_MANIFEST_PATH: docker/azure-vote
