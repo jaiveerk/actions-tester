@@ -146,7 +146,7 @@ jobs:
           strategy: canary
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
-            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}
             jkatariyatest.azurecr.io/githubactions/redis-frontend-test
           imagepullsecrets: |
             ${{ env.IMAGE_PULL_SECRET_NAME }}
