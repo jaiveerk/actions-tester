@@ -145,12 +145,10 @@ jobs:
           percentage: 50
           strategy: canary
           route-method: service
-          manifests: |
-            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-            jkatariyatest.azurecr.io/githubactions/redis-frontend-test
+          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-            jkatariyatest.azurecr.io/githubactions/redis-frontend-test
+            jkatariyatest.azurecr.io/githubactions/redis-frontend-test:${{ env.RESOURCE_GROUP }}
           imagepullsecrets: |
             ${{ env.IMAGE_PULL_SECRET_NAME }}
 
