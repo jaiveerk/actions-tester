@@ -146,17 +146,8 @@ jobs:
           strategy: canary
           route-method: service
           manifests: |
-            application/guestbook/frontend/frontend-deployment.yaml
-            application/guestbook/frontend/frontend-ingress.yaml
-            application/guestbook/frontend/frontend-service.yaml
-            application/guestbook/redis/redis-follower-deployment.yaml
-            application/guestbook/redis/redis-leader-deployment.yaml
-            application/guestbook/redis/redis-follower-service.yaml
-            application/guestbook/redis/redis-leader-service.yaml
-            docker/azure-vote/manifests/azure-vote-backend-deployment.yaml
-            docker/azure-vote/manifests/azure-vote-backend-service.yaml
-            docker/azure-vote/manifests/azure-vote-frontend-deployment.yaml
-            docker/azure-vote/manifests/azure-vote-frontend-service.yaml
+            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+            jkatariyatest.azurecr.io/githubactions/redis-frontend-test
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
             jkatariyatest.azurecr.io/githubactions/redis-frontend-test
