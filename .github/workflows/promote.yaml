@@ -40,7 +40,6 @@ env:
   CLUSTER_NAME: "jkatariyatest"
   CONTAINER_NAME: githubactions/azure-demo
   IMAGE_PULL_SECRET_NAME: "test-pull-secret"
-  DEPLOYMENT_MANIFEST_PATH: "application \n docker"
 
 jobs:
   build:
@@ -145,7 +144,18 @@ jobs:
           action: promote
           strategy: canary
           route-method: service
-          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+          manifests: |
+            application/guestbook/frontend/frontend-deployment.yaml
+            application/guestbook/frontend/frontend-ingress.yaml
+            application/guestbook/frontend/frontend-service.yaml
+            application/guestbook/redis/redis-follower-deployment.yaml
+            application/guestbook/redis/redis-leader-deployment.yaml
+            application/guestbook/redis/redis-follower-service.yaml
+            application/guestbook/redis/redis-leader-service.yaml
+            docker/azure-vote/manifests/azure-vote-backend-deployment.yaml
+            docker/azure-vote/manifests/azure-vote-backend-service.yaml
+            docker/azure-vote/manifests/azure-vote-frontend-deployment.yaml
+            docker/azure-vote/manifests/azure-vote-frontend-service.yaml
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
             jkatariyatest.azurecr.io/githubactions/azure-demo
