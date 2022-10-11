@@ -139,7 +139,7 @@ jobs:
 
       # Deploys application based on given manifest file
       - name: Deploys application
-        uses: azure/k8s-deploy@v1.5
+        uses: jaiveerk/k8s-deploy@create-release
         with:
           action: promote
           percentage: 50
@@ -159,8 +159,7 @@ jobs:
             docker/azure-vote/manifests/azure-vote-frontend-service.yaml
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-            jkatariyatest.azurecr.io/githubactions/azure-demo
-
+            jkatariyatest.azurecr.io/githubactions/redis-frontend-test
           imagepullsecrets: |
             ${{ env.IMAGE_PULL_SECRET_NAME }}
 
