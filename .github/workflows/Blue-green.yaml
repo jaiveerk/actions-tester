@@ -32,10 +32,10 @@ name: Build and deploy an app to AKS
 on:
   workflow_dispatch: null
 env:
-  AZURE_CONTAINER_REGISTRY: registry1
+  AZURE_CONTAINER_REGISTRY: jkatariyatest2
   CONTAINER_NAME: testimage
-  RESOURCE_GROUP: resourceGroup1
-  CLUSTER_NAME: cluster1
+  RESOURCE_GROUP: jkatariyatest
+  CLUSTER_NAME: jkatariyatest
   DEPLOYMENT_MANIFEST_PATH: docker
   DEPLOYMENT_STRATEGY: Blue/green
   BRANCH_NAME: main
@@ -80,6 +80,8 @@ jobs:
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
+          use-kubelogin: "true"
+          admin: "false"
       - name: Deploys application
         uses: Azure/k8s-deploy@v4
         with:
@@ -117,6 +119,8 @@ jobs:
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
+          use-kubelogin: "true"
+          admin: "false"
       - name: Deploys application
         uses: Azure/k8s-deploy@v4
         with:
@@ -148,6 +152,8 @@ jobs:
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           cluster-name: ${{ env.CLUSTER_NAME }}
+          use-kubelogin: "true"
+          admin: "false"
       - name: Deploys application
         uses: Azure/k8s-deploy@v4
         with:

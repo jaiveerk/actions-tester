@@ -26,7 +26,7 @@
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
 # For more options with the actions used below please refer to https://github.com/Azure/login
 
-name: Main Tester
+name: Promote Tester
 
 on:
   push:
@@ -142,8 +142,9 @@ jobs:
       - name: Deploys application
         uses: azure/k8s-deploy@v1.5
         with:
-          action: deploy
+          action: promote
           strategy: canary
+          route-method: service
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
