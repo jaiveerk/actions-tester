@@ -148,9 +148,7 @@ jobs:
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/githubactions/redis-follower-test
-            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/githubactions/redis-leader-test
-            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/githubactions/redis-frontend-test
+            jkatariyatest.azurecr.io/githubactions/azure-demo
 
           imagepullsecrets: |
             ${{ env.IMAGE_PULL_SECRET_NAME }}
