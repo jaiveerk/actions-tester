@@ -142,6 +142,7 @@ jobs:
         uses: azure/k8s-deploy@v1.5
         with:
           action: promote
+          percentage: 50
           strategy: canary
           route-method: service
           manifests: |

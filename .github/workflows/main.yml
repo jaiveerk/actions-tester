@@ -142,6 +142,7 @@ jobs:
         uses: azure/k8s-deploy@v4
         with:
           action: deploy
+          percentage: 50
           strategy: canary
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
