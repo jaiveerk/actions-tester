@@ -40,6 +40,8 @@ env:
   CLUSTER_NAME: "jkatariyatest"
   CONTAINER_NAME: githubactions/azure-demo
   IMAGE_PULL_SECRET_NAME: "test-pull-secret"
+  DEPLOYMENT_MANIFEST_PATH: "application \n docker"
+
 
 jobs:
   build:
