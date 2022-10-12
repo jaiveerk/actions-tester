@@ -144,6 +144,7 @@ jobs:
         uses: jaiveerk/k8s-deploy@create-release
         with:
           action: reject
+          traffic-split-method: smi
           percentage: 50
           strategy: canary
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
