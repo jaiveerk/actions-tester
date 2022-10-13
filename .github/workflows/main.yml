@@ -144,7 +144,6 @@ jobs:
           action: deploy
           percentage: 50
           strategy: canary
-          baseline-and-canary-replicas: 2
           traffic-split-method: pod
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
