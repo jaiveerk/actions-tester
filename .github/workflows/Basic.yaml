@@ -84,5 +84,6 @@ jobs:
           action: deploy
           manifests: |
             ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+            https://raw.githubusercontent.com/kubernetes/website/main/content/en/examples/controllers/nginx-deployment.yaml
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
