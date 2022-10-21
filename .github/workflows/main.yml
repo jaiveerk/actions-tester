@@ -141,7 +141,7 @@ jobs:
       - name: Deploys application
         uses: jaiveerk/k8s-deploy@create-release
         with:
-          action: deploy
+          action: reject
           percentage: 50
           strategy: blue-green
           route-method: smi
