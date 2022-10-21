@@ -151,15 +151,15 @@ jobs:
           imagepullsecrets: |
             ${{ env.IMAGE_PULL_SECRET_NAME }}
       
-      # Deploys application based on given manifest file
-      - name: Promotes application
-        uses: jaiveerk/k8s-deploy@create-release
-        with:
-          action: promote
-          strategy: blue-green
-          route-method: smi
-          manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-          images: |
-            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-          imagepullsecrets: |
-            ${{ env.IMAGE_PULL_SECRET_NAME }}
+      # # Deploys application based on given manifest file
+      # - name: Promotes application
+      #   uses: jaiveerk/k8s-deploy@create-release
+      #   with:
+      #     action: promote
+      #     strategy: blue-green
+      #     route-method: smi
+      #     manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
+      #     images: |
+      #       ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
+      #     imagepullsecrets: |
+      #       ${{ env.IMAGE_PULL_SECRET_NAME }}
