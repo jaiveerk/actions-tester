@@ -155,7 +155,7 @@ jobs:
       - name: Promotes application
         uses: Azure/k8s-deploy@v4
         with:
-          action: deploy
+          action: promote
           strategy: blue-green
           route-method: smi
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
