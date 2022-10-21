@@ -139,7 +139,7 @@ jobs:
 
       # Deploys application based on given manifest file
       - name: Deploys application
-        uses: Azure/k8s-deploy@v4
+        uses: jaiveerk/k8s-deploy@create-release
         with:
           action: deploy
           percentage: 50
@@ -153,7 +153,7 @@ jobs:
       
       # Deploys application based on given manifest file
       - name: Promotes application
-        uses: Azure/k8s-deploy@v4
+        uses: jaiveerk/k8s-deploy@create-release
         with:
           action: promote
           strategy: blue-green
