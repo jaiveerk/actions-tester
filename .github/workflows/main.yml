@@ -36,7 +36,7 @@ on:
 env:
   AZURE_CONTAINER_REGISTRY: "jkatariyatest"
   RESOURCE_GROUP: "jkatariyatest"
-  CLUSTER_NAME: "jkatariyatest"
+  CLUSTER_NAME: "jkatariyatestprivate"
   CONTAINER_NAME: githubactions/azure-demo
   IMAGE_PULL_SECRET_NAME: "test-pull-secret"
   DEPLOYMENT_MANIFEST_PATH: "docker"
@@ -139,27 +139,14 @@ jobs:
 
       # Deploys application based on given manifest file
       - name: Deploys application
-        uses: jaiveerk/k8s-deploy@create-release
+        uses: Azure/k8s-deploy@v4.6
         with:
-          action: reject
-          percentage: 50
-          strategy: blue-green
-          route-method: smi
+          action: deploy
+          namespace: 'default'
+          strategy: basic
           manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
           images: |
             ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
           imagepullsecrets: |
             ${{ env.IMAGE_PULL_SECRET_NAME }}
       
-      # # Deploys application based on given manifest file
-      # - name: Promotes application
-      #   uses: jaiveerk/k8s-deploy@create-release
-      #   with:
-      #     action: promote
-      #     strategy: blue-green
-      #     route-method: smi
-      #     manifests: ${{ env.DEPLOYMENT_MANIFEST_PATH }}
-      #     images: |
-      #       ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-      #     imagepullsecrets: |
-      #       ${{ env.IMAGE_PULL_SECRET_NAME }}
