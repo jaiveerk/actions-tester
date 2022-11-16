@@ -145,10 +145,6 @@ jobs:
           namespace: 'default'
           strategy: basic
           manifests: docker/azure-vote/manifests/azure-vote-backend-deployment.yaml
-          images: |
-            ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
-          imagepullsecrets: |
-            ${{ env.IMAGE_PULL_SECRET_NAME }}
+          images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
           private-cluster: true
           annotate-namespace: false
-      
