@@ -141,10 +141,10 @@ jobs:
       - name: Deploys application
         uses: Azure/k8s-deploy@v4.6
         with:
+          resource-group: ${{ env.RESOURCE_GROUP }}
+          name: ${{ env.CLUSTER_NAME }}
           action: deploy
           namespace: 'default'
-          strategy: basic
           manifests: docker/azure-vote/manifests/azure-vote-backend-deployment.yaml
-          images: ${{ env.AZURE_CONTAINER_REGISTRY }}.azurecr.io/${{ env.CONTAINER_NAME }}:${{ github.sha }}
           private-cluster: true
           annotate-namespace: false
