@@ -141,7 +141,7 @@ jobs:
 
       # Deploys application based on given manifest file
       - name: Deploys application
-        uses: jaiveerk/k8s-deploy@create-release
+        uses: jaiveerk/k8s-deploy@create-pull-request/patch
         with:
           action: promote
           traffic-split-method: pod
