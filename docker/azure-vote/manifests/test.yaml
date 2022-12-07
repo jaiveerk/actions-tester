@@ -23,6 +23,9 @@ spec:
       containers:
       - name: hello
         image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+        # env:
+        #   - name: ALLOW_EMPTY_PASSWORD
+        #     value: "yes"
         imagePullPolicy: IfNotPresent
         resources:
           requests:

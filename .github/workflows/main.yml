@@ -139,7 +139,7 @@ jobs:
 
       # Deploys application based on given manifest file
       - name: Deploys application
-        uses: Azure/k8s-deploy@v4
+        uses: jaiveerk/k8s-deploy@create-release
         with:
           resource-group: ${{ env.RESOURCE_GROUP }}
           name: ${{ env.CLUSTER_NAME }}
