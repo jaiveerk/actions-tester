@@ -144,7 +144,7 @@ jobs:
           resource-group: ${{ env.RESOURCE_GROUP }}
           name: ${{ env.CLUSTER_NAME }}
           action: deploy
-          namespace: 'default'
+          namespace: hello
           manifests: docker/azure-vote/manifests/test.yaml
           private-cluster: true
           annotate-namespace: false
