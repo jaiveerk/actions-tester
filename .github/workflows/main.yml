@@ -36,7 +36,7 @@ on:
 env:
   AZURE_CONTAINER_REGISTRY: "jkatariyatest"
   RESOURCE_GROUP: "jkatariyatest"
-  CLUSTER_NAME: "jkatariyatestprivate"
+  CLUSTER_NAME: "jkatariyatest"
   CONTAINER_NAME: githubactions/azure-demo
   IMAGE_PULL_SECRET_NAME: "test-pull-secret"
   DEPLOYMENT_MANIFEST_PATH: "docker"
