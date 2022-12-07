@@ -146,5 +146,4 @@ jobs:
           action: deploy
           namespace: hello
           manifests: docker/azure-vote/manifests/test.yaml
-          private-cluster: true
           annotate-namespace: false
