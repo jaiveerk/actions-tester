@@ -39,15 +39,15 @@ spec:
           successThreshold: 1
           failureThreshold: 3
           periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: "/hello"
-            port: 80
-          initialDelaySeconds: 5
-          timeoutSeconds: 2
-          successThreshold: 1
-          failureThreshold: 3
-          periodSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: "/hello"
+        #     port: 80
+        #   initialDelaySeconds: 5
+        #   timeoutSeconds: 2
+        #   successThreshold: 1
+        #   failureThreshold: 3
+        #   periodSeconds: 10
         ports:
         - containerPort: 80
           name: hello
