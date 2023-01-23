@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: main
+  name: main
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: main
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: main
+    spec:
+      containers:
+      - image: jkatariyatest.azurecr.io/main
+        name: main
+        ports:
+        - containerPort: 80
+        resources: {}
+status: {}
